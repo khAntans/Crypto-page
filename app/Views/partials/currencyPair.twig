@@ -1,0 +1,71 @@
+{% if currencyPair.getDayVolumeChange < 0 %}
+    {% set dayVolumeChange = 'red' %}
+{% elseif currencyPair.getDayVolumeChange > 0 %}
+    {% set dayVolumeChange = 'green' %}
+{% else %}
+    {% set dayVolumeChange  = 'black' %}
+{% endif %}
+
+{% if currencyPair.getHourlyPercentChange < 0 %}
+    {% set hourlyPercentChange= 'red' %}
+{% elseif currencyPair.getHourlyPercentChange > 0 %}
+    {% set hourlyPercentChange = 'green' %}
+{% else %}
+    {% set hourlyPercentChange = 'black' %}
+{% endif %}
+
+{% if currencyPair.getDailyPercentChange < 0 %}
+    {% set dailyPercentChange = 'red' %}
+{% elseif currencyPair.getDailyPercentChange > 0 %}
+    {% set dailyPercentChange = 'green' %}
+{% else %}
+    {% set dailyPercentChange = 'black' %}
+{% endif %}
+
+{% if currencyPair.getWeeklyPercentChange < 0 %}
+    {% set weeklyPercentChange = 'red' %}
+{% elseif currencyPair.getWeeklyPercentChange > 0 %}
+    {% set weeklyPercentChange = 'green' %}
+{% else %}
+    {% set weeklyPercentChange = 'black' %}
+{% endif %}
+
+{% if currencyPair.getMonthlyPercentChange < 0 %}
+    {% set monthlyPercentChange = 'red' %}
+{% elseif currencyPair.getMonthlyPercentChange> 0 %}
+    {% set monthlyPercentChange = 'green' %}
+{% else %}
+    {% set monthlyPercentChange = 'black' %}
+{% endif %}
+<div class="container-md card text-center" style="width: 21rem;">
+    <div class="card-img-top" style="padding:1rem">
+        <img src="{{ currencyPair.getBaseCurrency.getLogoUrl }}">
+        <img src="{{ currencyPair.getComparedCurrency.getLogoUrl }}">
+    </div>
+    <div class="pairName">
+        <h2>{{ currencyPair.getBaseCurrency.getSymbol }}{{ currencyPair.getComparedCurrency.getSymbol }}</h2>
+    </div>
+    <div class="conversion">
+        <h4>{{ currencyPair.getBaseCurrency.getName }} -> {{ currencyPair.getComparedCurrency.getName }}</h4>
+    </div>
+    <div class="exchangeInfo">
+        <p><b>Price: </b>{{ currencyPair.getPrice }} {{ currencyPair.getComparedCurrency.getSymbol }}</p>
+        <p><b>Daily volume: </b>{{ currencyPair.getDayVolume }} {{ currencyPair.getComparedCurrency.getSymbol }}</p>
+        <p style="color:{{ dayVolumeChange }}"><b style="color:black">Daily volume
+                change: </b>{{ currencyPair.getDayVolumeChange }}</p>
+        <p style="color:{{ hourlyPercentChange }}"><b style="color:black">Price change
+                (1h): </b>{{ currencyPair.getHourlyPercentChange }} %</p>
+        <p style="color:{{ dailyPercentChange }}"><b style="color:black">Price change
+                (24h): </b>{{ currencyPair.getDailyPercentChange }} %</p>
+        <p style="color:{{ weeklyPercentChange }}"><b style="color:black"> Price change
+                (7d): </b>{{ currencyPair.getWeeklyPercentChange }} %</p>
+        <p style="color:{{ monthlyPercentChange }}"><b style="color:black">Price change
+                (30d): </b>{{ currencyPair.getMonthlyPercentChange }} %</p>
+        <p><b>Market cap: </b>{{ currencyPair.getMarketCap }} {{ currencyPair.getComparedCurrency.getSymbol }}</p>
+        <p><b>Fully diluted market
+                cap: </b>{{ currencyPair.getFullyDilutedMarketCap }} {{ currencyPair.getComparedCurrency.getSymbol }}
+        </p>
+        <br>
+        <p><b>Updated: </b>{{ currencyPair.getLastUpdated }}</p>
+    </div>
+</div>

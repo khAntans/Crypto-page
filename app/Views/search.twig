@@ -1,0 +1,5 @@
+{% extends "partials/base.html.twig" %}
+{% block Title %}{{ currencyPair.getBaseCurrency.getSymbol }}{{ currencyPair.getComparedCurrency.getSymbol }}{% endblock %}
+{% block body %}
+    {% include 'partials/currencyPair.twig' %}
+{% endblock %}

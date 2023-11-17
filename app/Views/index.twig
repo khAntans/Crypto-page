@@ -1,0 +1,9 @@
+{% extends "partials/base.html.twig" %}
+{% block Title %}Index{% endblock %}
+{% block body %}
+    <div class="d-flex justify-content-center flex-wrap gap-3 container-md">
+        {% for currencyPair in currencyPairs %}
+            {% include 'partials/currencyPair.twig' %}
+        {% endfor %}
+    </div>
+{% endblock %}
